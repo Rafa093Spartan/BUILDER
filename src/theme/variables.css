@@ -1,8 +1,24 @@
 :root {
-  --ion-color-primary: #f57c00; /* naranja */
+  /* Colores principales */
+  --ion-color-primary: #f57c00;           /* Naranja principal */
   --ion-color-primary-rgb: 245, 124, 0;
-  --ion-color-primary-contrast: #fff;
-  --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #e67300;
-  --ion-color-primary-tint: #f89400;
+  --ion-color-primary-contrast: #ffffff;  /* Texto blanco sobre naranja */
+  --ion-color-primary-shade: #c46200;
+  --ion-color-primary-tint: #ff9d3b;
+
+  /* Fondo y texto */
+  --ion-background-color: #ffffff;        /* Fondo blanco */
+  --ion-text-color: #333333;              /* Texto oscuro para buena legibilidad */
+
+  /* Color para errores */
+  --ion-color-danger: #d93025;            /* Rojo fuerte para errores y alertas */
+
+  /* Tipografía */
+  --ion-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  /* Tamaños y espaciados */
+  --ion-padding-horizontal: 16px;
+  --ion-padding-vertical: 16px;
+  --ion-font-size-base: 16px;
+  --ion-font-size-small: 12px;
 }

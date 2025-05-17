@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
 import {
   IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
-  IonList, IonItem, IonLabel, IonButton, IonText, IonLoading,
-  IonFooter, IonTabBar, IonTabButton, IonIcon
+  IonList, IonItem, IonLabel, IonLoading
 } from "@ionic/react";
 import { auth, db } from "../firebaseConfig";
 import { signOut } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { useHistory } from "react-router-dom";
-import { homeOutline, settingsOutline } from "ionicons/icons";
 import "./Menu.css";
 
 const Menu: React.FC = () => {
@@ -94,18 +92,6 @@ const Menu: React.FC = () => {
           </IonItem>
         </IonList>
       </IonContent>
-      <IonFooter>
-        <IonTabBar slot="bottom">
-          <IonTabButton onClick={() => history.replace("/home")} tab="home" href="/home">
-            <IonIcon icon={homeOutline} />
-            Inicio
-          </IonTabButton>
-          <IonTabButton onClick={() => history.replace("/menu")} tab="settings" href="/menu">
-            <IonIcon icon={settingsOutline} />
-            Configuración
-          </IonTabButton>
-        </IonTabBar>
-      </IonFooter>
     </IonPage>
   );
 };

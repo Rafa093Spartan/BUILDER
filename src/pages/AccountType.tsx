@@ -26,7 +26,7 @@ const AccountType: React.FC = () => {
           <IonButton color="warning" onClick={() => history.push("/login")}>
             Usuario
           </IonButton>
-          <IonButton color="warning" onClick={() => alert("Proveedor no implementado aún")}>
+          <IonButton color="warning" onClick={() => history.push("/login-provider")}>
             Proveedor
           </IonButton>
         </div>

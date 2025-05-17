@@ -1,29 +1,58 @@
-import React, { useEffect } from "react";
-import { IonPage, IonContent, IonSpinner, IonText } from "@ionic/react";
-import { useHistory } from "react-router-dom";
-import { auth } from "../firebaseConfig";
-import "./Splash.css";
+import React, { useEffect, useState } from 'react';
+import {
+  IonPage,
+  IonContent,
+  IonSpinner,
+  IonText,
+  IonToast
+} from '@ionic/react';
+import { useHistory, useLocation } from 'react-router-dom';
+import { auth, onAuthStateChanged } from '../firebaseConfig';
 
 const Splash: React.FC = () => {
   const history = useHistory();
+  const location = useLocation<{ logoutMessage?: string }>();
+  const [showToast, setShowToast] = useState(false);
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      if (auth.currentUser) {
-        history.replace("/menu");
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        console.log("Splash: Usuario detectado");
+        history.replace('/tabs');
       } else {
-        history.replace("/account-type");
+        console.log("Splash: No hay usuario");
+        history.replace('/account-type');
       }
-    }, 3000);
+    });
 
-    return () => clearTimeout(timer);
+    return () => unsubscribe();
   }, [history]);
 
+  useEffect(() => {
+    if (location.state?.logoutMessage) {
+      setMessage(location.state.logoutMessage);
+      setShowToast(true);
+    }
+  }, [location]);
+
   return (
-    <IonPage className="splash-page">
-      <IonContent fullscreen className="splash-content">
+    <IonPage>
+      <IonContent
+        fullscreen
+        className="ion-text-center ion-justify-content-center ion-align-items-center"
+      >
         <IonSpinner name="crescent" color="warning" />
-        <IonText color="warning" className="loading-text">Cargando...</IonText>
+        <IonText color="warning">
+          <p>Cargando...</p>
+        </IonText>
+        <IonToast
+          isOpen={showToast}
+          message={message}
+          duration={2000}
+          color="success"
+          onDidDismiss={() => setShowToast(false)}
+        />
       </IonContent>
     </IonPage>
   );

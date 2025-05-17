@@ -1,9 +1,13 @@
+/* About.css */
+
 .about-page {
-  background-color: white;
+  --background: var(--ion-background-color);
+  color: var(--ion-text-color);
+  font-family: var(--ion-font-family);
 }
 
 .about-content {
-  font-size: 18px;
+  font-size: var(--ion-font-size-base);
   color: #333;
-  line-height: 1.6;
+  line-height: 1.5;
 }

@@ -1,24 +1,35 @@
 // src/firebaseConfig.ts
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import {
+getAuth,
+browserLocalPersistence,
+setPersistence,
+onAuthStateChanged // ✅ Asegurarse de importar esto
+} from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
-// Tu configuración copiada desde Firebase Console
+// ✅ Tu configuración Firebase
 const firebaseConfig = {
-  apiKey: "AIzaSyDOi0okmp40FIYZjLfYv3lfQCCKe8v2M-A",
-  authDomain: "builder-45492.firebaseapp.com",
-  projectId: "builder-45492",
-  storageBucket: "builder-45492.appspot.com",
-  messagingSenderId: "723865915607",
-  appId: "1:723865915607:web:adda2b474af6d1aef32092",
-  measurementId: "G-R9SRF0HSLP",
+apiKey: "AIzaSyDOi0okmp40FIYZjLfYv3lfQCCKe8v2M-A",
+authDomain: "builder-45492.firebaseapp.com",
+projectId: "builder-45492",
+storageBucket: "builder-45492.appspot.com",
+messagingSenderId: "723865915607",
+appId: "1:723865915607:web:adda2b474af6d1aef32092",
+measurementId: "G-R9SRF0HSLP",
 };
 
-// Inicializa Firebase
+// ✅ Inicializar Firebase
 const app = initializeApp(firebaseConfig);
 
-// Inicializa servicios que vas a usar
-export const auth = getAuth(app);
-export const db = getFirestore(app);
+// ✅ Inicializar Auth con persistencia
+const auth = getAuth(app);
+setPersistence(auth, browserLocalPersistence).catch((error) => {
+  console.error("Error al establecer persistencia:", error);
+});
 
-// Opcional, solo si quieres usar Analytics (no recomendado en Ionic web a menos que sepas para qué)
+// ✅ Inicializar Firestore
+const db = getFirestore(app);
+
+// ✅ Exportar todo lo necesario
+export { auth, db, onAuthStateChanged };

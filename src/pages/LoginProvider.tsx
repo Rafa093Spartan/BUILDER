@@ -7,9 +7,9 @@ import { auth, db } from "../firebaseConfig";
 import { sendPasswordResetEmail, signInWithEmailAndPassword } from "firebase/auth";
 import { useHistory } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
-import "./Login.css";
+import "./LoginProvider.css";
 
-const Login: React.FC = () => {
+const LoginProvider: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -26,23 +26,14 @@ const Login: React.FC = () => {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const uid = userCredential.user.uid;
 
-      // Buscar en providers primero
+      // Solo busca en providers
       const providerDoc = await getDoc(doc(db, "providers", uid));
       if (providerDoc.exists()) {
         history.replace("/provider/dashboard");
-        return;
+      } else {
+        setError("Esta cuenta no es de proveedor o no está registrada.");
+        await auth.signOut();
       }
-
-      // Buscar en users
-      const userDoc = await getDoc(doc(db, "users", uid));
-      if (userDoc.exists()) {
-        history.replace("/tabs/menu");
-        return;
-      }
-
-      setError("No se encontró el perfil asociado a esta cuenta.");
-      await auth.signOut();
-
     } catch (e: any) {
       if (e.code === "auth/user-not-found") {
         setError("No hay ninguna cuenta registrada con este correo electrónico.");
@@ -74,7 +65,7 @@ const Login: React.FC = () => {
     <IonPage className="login-page">
       <IonHeader>
         <IonToolbar color="warning">
-          <IonTitle>Iniciar Sesión</IonTitle>
+          <IonTitle>Iniciar Sesión Proveedor</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding">
@@ -104,12 +95,15 @@ const Login: React.FC = () => {
         <IonButton expand="block" color="warning" onClick={handleLogin} className="login-button">
           Iniciar sesión
         </IonButton>
-        <IonButton fill="clear" expand="block" onClick={() => history.push("/register")}>
-          ¿No tienes una cuenta? Regístrate
+
+        <IonButton fill="clear" expand="block" onClick={() => history.push("/register-provider")}>
+          ¿No tienes una cuenta? Regístrate como proveedor
         </IonButton>
+
         <IonButton fill="clear" expand="block" onClick={handleRecoverPassword}>
           ¿Olvidaste tu contraseña?
         </IonButton>
+
         <IonButton fill="clear" expand="block" onClick={() => history.push("/account-type")}>
           Cambiar tipo de cuenta
         </IonButton>
@@ -118,4 +112,4 @@ const Login: React.FC = () => {
   );
 };
 
-export default Login;
+export default LoginProvider;
