@@ -1,0 +1,17 @@
+.register-page {
+  background-color: #fff7e6;
+}
+
+.register-input {
+  font-size: 16px;
+  color: #333;
+}
+
+.register-button {
+  margin-top: 20px;
+}
+
+.error-text {
+  margin: 10px 0;
+  font-weight: bold;
+}

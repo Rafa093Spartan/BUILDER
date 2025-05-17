@@ -1,0 +1,19 @@
+.menu-page {
+  background-color: #fff7e6;
+}
+
+.menu-page ion-item {
+  --background: #fffbe6;
+  margin-bottom: 6px;
+  border-radius: 6px;
+}
+
+.menu-page ion-label h2 {
+  color: #f57c00;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.menu-page ion-label p {
+  color: #555;
+}

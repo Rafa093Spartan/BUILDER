@@ -1,0 +1,35 @@
+.account-type-page {
+  background-color: white;
+}
+
+.account-type-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+}
+
+.title-text {
+  font-size: 40px;
+  font-weight: bold;
+  color: #f57c00;
+  margin-bottom: 20px;
+}
+
+.person-icon {
+  font-size: 100px;
+  color: #f57c00;
+  margin-bottom: 20px;
+}
+
+.subtitle-text {
+  font-size: 20px;
+  margin-bottom: 40px;
+}
+
+.buttons-row {
+  display: flex;
+  gap: 20px;
+}

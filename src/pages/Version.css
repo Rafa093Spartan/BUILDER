@@ -1,0 +1,19 @@
+.version-page {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.version-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.version-text {
+  font-size: 24px;
+  color: #f57c00;
+  font-weight: bold;
+}
