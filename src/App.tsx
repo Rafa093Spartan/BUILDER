@@ -15,6 +15,12 @@ import MainTabs from './pages/MainTabs';
 import Home from './pages/Home';
 import Menu from './pages/Menu';
 
+import Ayuda from './pages/Ayuda'; // Asegúrate de que la ruta sea correcta
+import Tarjetas from './pages/Tarjetas';
+import AgregarTarjetaSplash from './pages/AgregarTarjetaSplash';
+import FormularioAgregarTarjeta from "./pages/FormularioAgregarTarjeta";
+
+
 import LoginProvider from './pages/LoginProvider';
 import RegisterProvider from './pages/RegisterProvider';
 import RecoverPasswordProvider from './pages/RecoverPasswordProvider';
@@ -61,6 +67,10 @@ const App: React.FC = () => (
         <Route path="/tabs/home" component={Home} exact />
         <Route path="/tabs/menu" component={Menu} exact />
         <Route path="/tabs" component={MainTabs} />
+        <Route path="/ayuda" component={Ayuda} exact />
+        <Route path="/tarjetas" component={Tarjetas} exact />
+        <Route path="/agregar-tarjeta" component={AgregarTarjetaSplash} exact />
+        <Route path="/formulario-agregar-tarjeta" component={FormularioAgregarTarjeta} exact />
 
         {/* Proveedor */}
         <Route path="/login-provider" component={LoginProvider} exact />

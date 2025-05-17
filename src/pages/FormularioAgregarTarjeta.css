@@ -1,0 +1,10 @@
+.botones-formulario {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+ion-input {
+  font-size: 1rem;
+}

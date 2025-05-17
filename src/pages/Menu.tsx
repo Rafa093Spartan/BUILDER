@@ -56,7 +56,7 @@ const Menu: React.FC = () => {
             </IonLabel>
           </IonItem>
 
-          <IonItem button>
+          <IonItem button onClick={() => history.push("/tarjetas")}>
             <IonLabel>
               <h2>Billetera</h2>
               <p>Consulta y gestiona tus transacciones y saldo.</p>
@@ -70,7 +70,7 @@ const Menu: React.FC = () => {
             </IonLabel>
           </IonItem>
 
-          <IonItem button>
+          <IonItem button onClick={() => history.push("/ayuda")}>
             <IonLabel>
               <h2>Ayuda</h2>
               <p>Encuentra respuestas y soporte para cualquier duda.</p>

@@ -1,0 +1,46 @@
+.tarjeta-slider {
+  display: flex;
+  overflow-x: scroll;
+  gap: 16px;
+  padding: 16px 0;
+}
+
+.tarjeta-card {
+  min-width: 250px;
+  background-color: #0b3d91;
+  color: white;
+  border-radius: 16px;
+}
+
+.tarjeta-nombre {
+  font-size: 1rem;
+}
+
+.tarjeta-num {
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  margin-top: 8px;
+}
+
+.tarjeta-detalle {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  margin-top: 8px;
+}
+
+.tarjeta-red {
+  text-align: right;
+  margin-top: 8px;
+}
+
+.detalle-info {
+  padding: 16px;
+  font-size: 0.95rem;
+}
+
+.add-button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
