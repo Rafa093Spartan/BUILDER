@@ -1,0 +1,11 @@
+/* ProviderCommon.css */
+ion-back-button {
+  --color: var(--ion-color-primary);
+  margin-left: 10px;
+  font-weight: bold;
+  --icon-size: 24px;
+}
+
+ion-toolbar ion-buttons {
+  margin-left: 8px;
+}

@@ -1,0 +1,55 @@
+.provider-job-list-page {
+  --background: var(--ion-background-color);
+  color: var(--ion-text-color);
+  font-family: var(--ion-font-family);
+}
+
+.job-list-header {
+  font-weight: bold;
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: var(--ion-color-primary);
+  text-align: center;
+}
+
+.ion-list {
+  margin-bottom: 20px;
+}
+
+.job-item {
+  --background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  margin-bottom: 12px;
+  padding: 10px;
+  color: #333;
+}
+
+.job-title {
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+.job-description {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 6px;
+}
+
+.job-status {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ion-color-primary);
+}
+
+.no-jobs-text {
+  text-align: center;
+  font-size: 16px;
+  margin-top: 40px;
+  color: #666;
+}
+
+.ion-button {
+  margin-top: 15px;
+}

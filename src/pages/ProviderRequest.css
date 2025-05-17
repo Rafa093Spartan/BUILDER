@@ -1,0 +1,57 @@
+.provider-request-page {
+  --background: var(--ion-background-color);
+  color: var(--ion-text-color);
+}
+
+.request-list-header {
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.no-requests-text {
+  font-style: italic;
+  color: gray;
+}
+
+.request-item {
+  --background: #fff;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  padding: 10px;
+}
+
+.request-title {
+  font-weight: 600;
+}
+
+.request-details {
+  font-size: 14px;
+  margin: 4px 0;
+}
+
+.request-status {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+  margin-left: 12px;
+}
+
+.accept {
+  --background: #28a745;
+  --color: white;
+}
+
+.reject {
+  --background: #dc3545;
+  --color: white;
+}
+
+.complete {
+  --background: #007bff;
+  --color: white;
+}

@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import {
   IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
-  IonText, IonList, IonItem, IonLabel, IonButton, IonLoading
+  IonList, IonItem, IonLabel, IonText, IonButton, IonLoading, IonButtons, IonBackButton
 } from "@ionic/react";
 import { auth, db } from "../firebaseConfig";
 import { doc, getDoc } from "firebase/firestore";
 import { useHistory } from "react-router-dom";
 import "./ProviderDashboard.css";
+import '../theme/ProviderCommon.css';
 
 interface ProviderData {
   fullName: string;
@@ -58,6 +59,9 @@ const ProviderDashboard: React.FC = () => {
     <IonPage className="provider-dashboard-page">
       <IonHeader>
         <IonToolbar color="warning">
+          <IonButtons slot="start">
+            <IonBackButton defaultHref="/account-type" />
+          </IonButtons>
           <IonTitle>Dashboard Proveedor</IonTitle>
         </IonToolbar>
       </IonHeader>
@@ -76,6 +80,15 @@ const ProviderDashboard: React.FC = () => {
           <p><strong>Calificación:</strong> {providerData.rating.toFixed(1)} ⭐</p>
           <p><strong>Trabajos completados:</strong> {providerData.completedJobs}</p>
         </IonText>
+
+        {/* Botones de navegación */}
+        <IonButton expand="block" color="primary" onClick={() => history.push("/provider/jobs")}>
+          Mis Trabajos
+        </IonButton>
+        <IonButton expand="block" color="secondary" onClick={() => history.push("/provider/requests")}>
+          Solicitudes
+        </IonButton>
+
         <IonButton expand="block" color="warning" onClick={() => history.push("/provider/edit-profile")}>
           Editar Perfil
         </IonButton>

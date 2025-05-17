@@ -1,0 +1,21 @@
+.user-requests-page {
+  --background: var(--ion-background-color);
+  color: var(--ion-text-color);
+}
+
+.request-item {
+  --background: #fff;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  padding: 10px;
+}
+
+.request-item h3 {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.request-item p {
+  margin: 3px 0;
+}
