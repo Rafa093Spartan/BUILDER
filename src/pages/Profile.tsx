@@ -40,11 +40,8 @@ const Profile: React.FC = () => {
     setLoading(true);
     try {
       const imageRef = ref(storage, `profilePhotos/${auth.currentUser.uid}`);
-
       await uploadBytes(imageRef, selectedFile);
-
       const downloadURL = await getDownloadURL(imageRef);
-
       const userDocRef = doc(firestore, "users", auth.currentUser.uid);
       await updateDoc(userDocRef, {
         photoURL: downloadURL
@@ -63,7 +60,7 @@ const Profile: React.FC = () => {
   return (
     <IonPage className="profile-page">
       <IonHeader>
-        <IonToolbar color="warning">
+        <IonToolbar className="header-toolbar">
           <IonTitle>Perfil de Usuario</IonTitle>
         </IonToolbar>
       </IonHeader>
@@ -73,7 +70,13 @@ const Profile: React.FC = () => {
             <img
               src={photo}
               alt="Foto de perfil"
-              style={{ width: 150, height: 150, borderRadius: "50%", objectFit: "cover", border: "3px solid #f2a900" }}
+              style={{
+                width: 150,
+                height: 150,
+                borderRadius: "50%",
+                objectFit: "cover",
+                border: "3px solid #f2a900"
+              }}
             />
           ) : (
             <div
@@ -100,12 +103,38 @@ const Profile: React.FC = () => {
           style={{ display: "block", margin: "0 auto 20px auto" }}
         />
 
-        <IonText>
-          <p><strong>Nombre completo:</strong> {userData.fullName ?? "Desconocido"}</p>
-          <p><strong>Correo electrónico:</strong> {userData.email ?? "No disponible"}</p>
-          <p><strong>Teléfono:</strong> {userData.phone ?? "No disponible"}</p>
-          <p><strong>Fecha de nacimiento:</strong> {userData.birthDate ?? "No disponible"}</p>
-        </IonText>
+        <div className="profile-info">
+          <div className="info-row">
+            <span className="label">Nombre completo</span>
+            <span className="value">{userData.fullName ?? "Desconocido"}</span>
+            <div className="line" />
+          </div>
+          <div className="info-row">
+            <span className="label">Apellidos</span>
+            <span className="value">{userData.lastName ?? "No disponible"}</span>
+            <div className="line" />
+          </div>
+          <div className="info-row">
+            <span className="label">Correo</span>
+            <span className="value">{userData.email ?? "No disponible"}</span>
+            <div className="line" />
+          </div>
+          <div className="info-row">
+            <span className="label">Contraseña</span>
+            <span className="value">**********</span>
+            <div className="line" />
+          </div>
+          <div className="info-row">
+            <span className="label">Numero de Telefono</span>
+            <span className="value">{userData.phone ?? "No disponible"}</span>
+            <div className="line" />
+          </div>
+          <div className="info-row">
+            <span className="label">Fecha de Nacimiento</span>
+            <span className="value">{userData.birthDate ?? "No disponible"}</span>
+            <div className="line" />
+          </div>
+        </div>
 
         <IonButton
           expand="block"

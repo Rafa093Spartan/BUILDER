@@ -26,14 +26,12 @@ const Login: React.FC = () => {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const uid = userCredential.user.uid;
 
-      // Buscar en providers primero
       const providerDoc = await getDoc(doc(db, "providers", uid));
       if (providerDoc.exists()) {
         history.replace("/provider/dashboard");
         return;
       }
 
-      // Buscar en users
       const userDoc = await getDoc(doc(db, "users", uid));
       if (userDoc.exists()) {
         history.replace("/tabs/menu");
@@ -73,7 +71,7 @@ const Login: React.FC = () => {
   return (
     <IonPage className="login-page">
       <IonHeader>
-        <IonToolbar color="warning">
+        <IonToolbar className="login-toolbar">
           <IonTitle>Iniciar Sesión</IonTitle>
         </IonToolbar>
       </IonHeader>

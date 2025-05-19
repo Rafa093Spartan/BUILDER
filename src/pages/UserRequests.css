@@ -3,19 +3,35 @@
   color: var(--ion-text-color);
 }
 
+/* Encabezado azul oscuro con texto blanco centrado */
+.header-toolbar {
+  --background: #012538 !important;
+  --color: white !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+  box-shadow: none;
+  color: white;
+}
+
 .request-item {
-  --background: #fff;
+  background: #fff;
   margin-bottom: 12px;
-  border-radius: 6px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  padding: 16px;
 }
 
 .request-item h3 {
   font-weight: 600;
+  font-size: 16px;
   margin-bottom: 6px;
+  color: #012538;
 }
 
 .request-item p {
-  margin: 3px 0;
+  margin: 4px 0;
+  font-size: 14px;
+  color: #444;
 }

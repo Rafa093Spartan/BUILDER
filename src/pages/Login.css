@@ -33,3 +33,13 @@ ion-content.ion-padding {
   padding-left: var(--ion-padding-horizontal);
   padding-right: var(--ion-padding-horizontal);
 }
+
+/* Nuevo: Encabezado oscuro con texto blanco */
+.login-toolbar {
+  --background: #012538 !important;
+  --color: white !important;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -55,7 +55,6 @@ const UserRequests: React.FC = () => {
   }, [history]);
 
   if (!auth.currentUser) {
-    // Caso raro si el usuario no está logueado
     return (
       <IonPage>
         <IonContent className="ion-padding">
@@ -83,7 +82,7 @@ const UserRequests: React.FC = () => {
   return (
     <IonPage className="user-requests-page">
       <IonHeader>
-        <IonToolbar color="warning">
+        <IonToolbar className="header-toolbar">
           <IonTitle>Mis Solicitudes</IonTitle>
         </IonToolbar>
       </IonHeader>
