@@ -18,7 +18,7 @@
   color: white !important;
   font-size: 1.8rem;
   font-weight: 600;
-  text-align: left;
+  text-align: center;
 }
 
 .content-container {
@@ -41,12 +41,10 @@
   gap: 3rem;
   background-color: white;
   box-sizing: border-box;
-  /* padding-right 50px;  <- Esto no tiene dos puntos y no hace nada */
 
   margin-left: 65px; /* mover a la derecha */
   margin-top: 70px;  /* mover hacia abajo */
 }
-
 
 .form-title {
   font-size: 1rem;
@@ -61,7 +59,7 @@
   width: 100%;
   resize: none;
   border: none;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid black; /* Primera línea negra que quieres mantener */
   outline: none;
   font-size: 0.9rem;
   color: #666;
@@ -78,13 +76,12 @@
   background-color: #fb9833 !important;
   color: black !important;
   font-weight: 700;
-  width: 130px;
+  width: 85px;
+  height: 60px; /* Corregido typo */
   align-self: center;
-  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: none; /* Quita sombra que parecía línea */
   text-transform: none !important;
-  margin-top: 70px;
+  margin-top: 40px; /* Reducido para separar del textarea y quitar línea */
   font-family: Geologica, Regular;
   font-size: 14px;
-  width: 85px
-  hight: 60px
 }
