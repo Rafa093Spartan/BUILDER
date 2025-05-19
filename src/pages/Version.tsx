@@ -11,7 +11,7 @@ const Version: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding version-content">
-        <IonText className="version-text">Versión 1.0.0</IonText>
+        <IonText className="version-text">Versión ALPHA-BETA-0.01</IonText>
       </IonContent>
     </IonPage>
   );
