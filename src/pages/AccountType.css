@@ -1,16 +1,45 @@
+:root {
+  /* Colores principales */
+  --ion-color-primary: #f57c00;
+  --ion-color-primary-rgb: 245, 124, 0;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-shade: #c46200;
+  --ion-color-primary-tint: #ff9d3b;
+
+  /* Fondo y texto */
+  --ion-background-color: #ffffff;
+  --ion-text-color: #333333;
+
+  /* Color para errores */
+  --ion-color-danger: #d93025;
+
+  /* Tipografía */
+  --ion-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  /* Tamaños y espaciados */
+  --ion-padding-horizontal: 16px;
+  --ion-padding-vertical: 16px;
+  --ion-font-size-base: 16px;
+  --ion-font-size-small: 12px;
+}
+
 .account-type-page {
   background-color: #ffffff;
   color: #000000;
+  height: 100vh; /* Asegura altura completa de la pantalla */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .account-type-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: start;
-  height: 100%;
+  justify-content: center; /* CENTRA verticalmente */
+  height: 100vh;           /* OCUPA TODA LA PANTALLA */
   text-align: center;
-  padding-top: 30px;
+  padding: 0 16px;
 }
 
 .branding-container {
@@ -45,21 +74,25 @@
 .account-block {
   display: flex;
   flex-direction: column;
+  align-items: center;  /* Centra horizontalmente las tarjetas */
   gap: 30px;
-  width: 90%;
+  width: 100%;
   max-width: 400px;
 }
 
 /* Caja horizontal para cada fila */
 .account-row {
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
   align-items: center;
+  justify-content: center; /* Centra ícono + botón juntos */
+  gap: 16px;
   background-color: #012538;
   padding: 20px;
   border: 1px solid #fb9833;
   border-radius: 12px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  width: 100%;
 }
 
 /* Ícono izquierdo en blanco */
@@ -84,12 +117,11 @@
 .divider {
   border: none;
   border-top: 1px solid #aaa;
-  width: 80%;
+  width: 60%;
   margin: 0 auto;
 }
 
 /* ===== CAMBIOS APLICADOS AQUÍ ===== */
-/* Cambia el color del toolbar a fondo #012538 y letras blancas */
 ion-toolbar {
   --background: #012538 !important;
 }

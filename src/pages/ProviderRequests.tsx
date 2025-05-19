@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import {
   IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
-  IonList, IonItem, IonLabel, IonText, IonButton, IonLoading, IonButtons, IonBackButton
+  IonList, IonItem, IonLabel, IonText, IonButton, IonLoading, IonButtons, IonBackButton,
+  useIonToast
 } from "@ionic/react";
 import { auth, db } from "../firebaseConfig";
 import {
@@ -31,6 +32,7 @@ const ProviderRequest: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [updatingId, setUpdatingId] = useState<string | null>(null);
   const history = useHistory();
+  const [presentToast] = useIonToast();
 
   useEffect(() => {
     if (!auth.currentUser) {
@@ -95,13 +97,41 @@ const ProviderRequest: React.FC = () => {
     setUpdatingId(id);
     try {
       const requestRef = doc(db, "requests", id);
-      await updateDoc(requestRef, {
+
+      const updateData: any = {
         status: newStatus,
-        providerId: auth.currentUser?.uid,
-        completedAt: newStatus === "completed" ? serverTimestamp() : null,
+      };
+
+      if (newStatus === "accepted") {
+        updateData.providerId = auth.currentUser?.uid;
+      }
+
+      if (newStatus === "completed") {
+        updateData.completedAt = serverTimestamp();
+      }
+
+      await updateDoc(requestRef, updateData);
+
+      const statusMessage: Record<string, string> = {
+        accepted: "Solicitud aceptada.",
+        rejected: "Solicitud rechazada.",
+        completed: "Solicitud completada.",
+      };
+
+      presentToast({
+        message: statusMessage[newStatus] || "Solicitud actualizada.",
+        duration: 2000,
+        color: "success",
+        position: "top",
       });
-    } catch (error) {
-      console.error("Error actualizando solicitud:", error);
+   } catch (error: any) {
+     console.error("Error actualizando solicitud:", error);
+     presentToast({
+       message: `Error: ${error.message || "No se pudo actualizar la solicitud."}`,
+       duration: 2000,
+       color: "danger",
+       position: "top",
+     });
     } finally {
       setUpdatingId(null);
     }
