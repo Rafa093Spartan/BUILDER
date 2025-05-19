@@ -1,14 +1,90 @@
-/* Home.css */
-
 .home-page {
-  --background: var(--ion-background-color);
-  color: var(--ion-text-color);
-  font-family: var(--ion-font-family);
+  --background: #fff;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  min-height: 100vh;
 }
 
-h2 {
-  font-weight: bold;
-  color: var(--ion-color-primary);
-  margin-top: 20px;
+.header-toolbar {
+  --background: #012538 !important;
+  --color: white !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+  box-shadow: none;
+}
+
+.header-title {
+  color: white !important;
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-align: left;
+}
+
+.content-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height para centrar vertical */
+  padding: 0 1rem;
+}
+
+.form-box {
+  width: 280px;
+  height: 500px;
+  border-radius: 20px;
+  border: 2px solid #fb9833; /* borde naranja */
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  background-color: white;
+  box-sizing: border-box;
+  /* padding-right 50px;  <- Esto no tiene dos puntos y no hace nada */
+
+  margin-left: 65px; /* mover a la derecha */
+  margin-top: 70px;  /* mover hacia abajo */
+}
+
+
+.form-title {
+  font-size: 1rem;
+  font-weight: 400;
   text-align: center;
+  border-bottom: 1px solid black;
+  padding-bottom: 0.5rem;
+  width: 100%;
+}
+
+.form-textarea {
+  width: 100%;
+  resize: none;
+  border: none;
+  border-bottom: 1px solid black;
+  outline: none;
+  font-size: 0.9rem;
+  color: #666;
+  padding-bottom: 0.2rem;
+  font-family: inherit;
+}
+
+.form-textarea::placeholder {
+  color: #999;
+  font-weight: 300;
+}
+
+.send-button {
+  background-color: #fb9833 !important;
+  color: black !important;
+  font-weight: 700;
+  width: 130px;
+  align-self: center;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
+  text-transform: none !important;
+  margin-top: 70px;
+  font-family: Geologica, Regular;
+  font-size: 14px;
+  width: 85px
+  hight: 60px
 }
