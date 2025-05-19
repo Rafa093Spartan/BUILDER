@@ -22,31 +22,36 @@ const ProviderJobList: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const history = useHistory();
 
-  useEffect(() => {
-    const fetchJobs = async () => {
-      if (!auth.currentUser) {
-        history.replace("/login-provider");
-        return;
-      }
-      setLoading(true);
-      setError(null);
-      try {
-        const q = query(collection(db, "jobs"), where("providerId", "==", auth.currentUser.uid));
-        const querySnapshot = await getDocs(q);
-        const jobsData: Job[] = [];
-        querySnapshot.forEach(doc => {
-          jobsData.push({ id: doc.id, ...(doc.data() as Omit<Job, "id">) });
-        });
-        setJobs(jobsData);
-      } catch (error) {
-        console.error("Error cargando trabajos:", error);
-        setError("Error cargando trabajos. Intenta más tarde.");
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchJobs();
-  }, [history]);
+useEffect(() => {
+  const fetchJobs = async () => {
+    if (!auth.currentUser) {
+      history.replace("/login-provider");
+      return;
+    }
+    setLoading(true);
+    setError(null);
+    try {
+      const q = query(
+        collection(db, "requests"),
+        where("providerId", "==", auth.currentUser.uid),
+        where("status", "==", "authorized") // ✅ solo autorizados
+      );
+      const querySnapshot = await getDocs(q);
+      const jobsData: Job[] = [];
+      querySnapshot.forEach(doc => {
+        jobsData.push({ id: doc.id, ...(doc.data() as Omit<Job, "id">) });
+      });
+      setJobs(jobsData);
+    } catch (error) {
+      console.error("Error cargando trabajos:", error);
+      setError("Error cargando trabajos. Intenta más tarde.");
+    } finally {
+      setLoading(false);
+    }
+  };
+  fetchJobs();
+}, [history]);
+
 
   if (loading) {
     return <IonLoading isOpen message="Cargando trabajos..." />;

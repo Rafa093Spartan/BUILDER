@@ -1,38 +1,99 @@
 .account-type-page {
-  background-color: #121212;
-  color: #f5f5f5;
+  background-color: #ffffff;
+  color: #000000;
 }
 
 .account-type-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
   height: 100%;
   text-align: center;
+  padding-top: 30px;
+}
+
+.branding-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .title-text {
-  font-size: 36px;
-  font-weight: 700;
+  font-size: 44px;
+  font-weight: 900;
   color: #f57c00;
-  margin-bottom: 25px;
-}
-
-.person-icon {
-  font-size: 90px;
-  color: #f57c00;
-  margin-bottom: 25px;
+  margin-bottom: 4px;
+  font-family: 'capture smallz clean';
 }
 
 .subtitle-text {
-  font-size: 22px;
-  margin-bottom: 40px;
-  color: #f5f5f5;
+  font-size: 18px;
+  font-weight: 500;
+  color: #000000;
+  font-family: 'Geologica', sans-serif;
 }
 
-.buttons-row {
+.person-icon {
+  font-size: 80px;
+  color: #000000;
+  margin: 30px 0 40px;
+}
+
+/* Contenedor vertical para usuario y proveedor */
+.account-block {
   display: flex;
-  gap: 25px;
-  justify-content: center;
+  flex-direction: column;
+  gap: 30px;
+  width: 90%;
+  max-width: 400px;
+}
+
+/* Caja horizontal para cada fila */
+.account-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #012538;
+  padding: 20px;
+  border: 1px solid #fb9833;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+/* Ícono izquierdo en blanco */
+.row-icon {
+  font-size: 50px;
+  color: white;
+}
+
+/* Botón estilo pastilla */
+.row-button {
+  --background: #fb9833;
+  --color: black;
+  font-weight: bold;
+  text-transform: none;
+  border-radius: 20px;
+  padding: 6px 18px;
+  font-family: 'Geologica', sans-serif;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Línea divisoria */
+.divider {
+  border: none;
+  border-top: 1px solid #aaa;
+  width: 80%;
+  margin: 0 auto;
+}
+
+/* ===== CAMBIOS APLICADOS AQUÍ ===== */
+/* Cambia el color del toolbar a fondo #012538 y letras blancas */
+ion-toolbar {
+  --background: #012538 !important;
+}
+
+ion-title {
+  color: #ffffff !important;
 }

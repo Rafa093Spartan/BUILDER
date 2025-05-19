@@ -7,7 +7,7 @@ import {
 import { auth, db } from "../firebaseConfig";
 import { doc, getDoc, collection, query, where, getDocs, addDoc, serverTimestamp } from "firebase/firestore";
 import { useHistory } from "react-router-dom";
-import { notificationsOutline } from "ionicons/icons";
+import { notificationsOutline, logOutOutline } from "ionicons/icons"; // ← IMPORTA EL ICONO DE SALIR
 import "./Home.css";
 
 interface Notification {
@@ -21,7 +21,7 @@ const Home: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [showNotifications, setShowNotifications] = useState(false);
   const [notifications, setNotifications] = useState<Notification[]>([]);
-  const [requestTitle, setRequestTitle] = useState("");  // Nuevo estado para título
+  const [requestTitle, setRequestTitle] = useState("");
   const [requestText, setRequestText] = useState("");
   const [sending, setSending] = useState(false);
   const history = useHistory();
@@ -42,7 +42,7 @@ const Home: React.FC = () => {
   useEffect(() => {
     if (showNotifications && auth.currentUser) {
       const fetchNotifications = async () => {
-        const q = query(collection(db, "applications"), where("userId", "==", auth.currentUser!.uid));
+        const q = query(collection(db, "applications"), where("userId", "==", auth.currentUser.uid));
         const querySnapshot = await getDocs(q);
         const notifs: Notification[] = [];
         querySnapshot.forEach(doc => {
@@ -114,7 +114,7 @@ const Home: React.FC = () => {
         </IonText>
 
         <div className="form-box">
-          <div className="form-title">Crear solicitud</div>
+          <div className="form-title">crear solicitud</div>
           <input
             type="text"
             placeholder="Titulo"
@@ -123,7 +123,7 @@ const Home: React.FC = () => {
             onChange={(e) => setRequestTitle(e.target.value)}
           />
           <textarea
-            placeholder="Escribe tu solicitud"
+            placeholder="escribe tu solicitud"
             className="form-textarea"
             rows={10}
             value={requestText}
@@ -135,7 +135,7 @@ const Home: React.FC = () => {
               onClick={() => history.push("/user-requests")}
               color="warning"
             >
-              ver mis solicitudes
+              solicitudes
             </IonButton>
             <IonButton
               className="send-button"
@@ -143,17 +143,19 @@ const Home: React.FC = () => {
               disabled={sending}
               color="warning"
             >
-              {sending ? "Enviando..." : "enviar"}
+              {sending ? "Enviando..." : "Enviar"}
             </IonButton>
           </div>
         </div>
 
         <IonModal isOpen={showNotifications} onDidDismiss={() => setShowNotifications(false)}>
           <IonHeader>
-            <IonToolbar color="warning">
+            <IonToolbar className="modal-toolbar">
               <IonTitle>Notificaciones</IonTitle>
               <IonButtons slot="end">
-                <IonButton onClick={() => setShowNotifications(false)}>Cerrar</IonButton>
+                <IonButton className="close-button" onClick={() => setShowNotifications(false)}>
+                  <IonIcon slot="icon-only" icon={logOutOutline} />
+                </IonButton>
               </IonButtons>
             </IonToolbar>
           </IonHeader>

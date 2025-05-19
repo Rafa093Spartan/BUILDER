@@ -14,6 +14,7 @@ import About from './pages/About';
 import MainTabs from './pages/MainTabs';
 import Home from './pages/Home';
 import Menu from './pages/Menu';
+import RequestDetail from './pages/RequestDetail';
 
 import Ayuda from './pages/Ayuda'; // Asegúrate de que la ruta sea correcta
 import Tarjetas from './pages/Tarjetas';
@@ -85,6 +86,7 @@ const App: React.FC = () => (
         <Route path="/create-request" component={CreateRequest} exact />
         <Route path="/user-requests" component={UserRequests} exact />
         <Route path="/manage-requests" component={ManageRequests} exact />
+        <Route path="/request-detail" component={RequestDetail} exact />
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>
