@@ -88,6 +88,37 @@ ion-item ion-label p {
   --background: var(--ion-color-warning);
   --color: #000;
   font-family: geologica, regular;
+<<<<<<< HEAD
+}
+
+/* Estilo del encabezado del modal de notificaciones */
+.modal-toolbar {
+  --background: #012538 !important;
+  --color: white !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+/* Ícono botón "salir" sin fondo, blanco, cambia a naranja al pasar/click */
+.close-button {
+  background: transparent !important;
+  color: white !important;
+  --color: white;
+  --background: transparent !important;
+  --box-shadow: none !important;
+  --border: none;
+  font-size: 20px;
+  transition: color 0.2s ease;
+}
+
+.close-button:hover,
+.close-button:focus,
+.close-button:active {
+  color: #fb9833 !important;
+=======
+>>>>>>> 75a8d900d9b2448f3fcfcc50fc705156026de2f3
 }
 
 /* Estilo del encabezado del modal de notificaciones */
@@ -117,4 +148,3 @@ ion-item ion-label p {
 .close-button:active {
   color: #fb9833 !important;
 }
-
