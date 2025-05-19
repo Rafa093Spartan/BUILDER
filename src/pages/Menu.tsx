@@ -42,7 +42,7 @@ const Menu: React.FC = () => {
   return (
     <IonPage className="menu-page">
       <IonHeader>
-        <IonToolbar color="warning">
+        <IonToolbar color = "header-toolbar">
           <IonTitle>Menú</IonTitle>
         </IonToolbar>
       </IonHeader>

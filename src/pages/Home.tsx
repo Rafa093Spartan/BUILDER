@@ -93,7 +93,7 @@ const Home: React.FC = () => {
   return (
     <IonPage className="home-page">
       <IonHeader>
-        <IonToolbar color="warning">
+        <IonToolbar className="header-toolbar">
           <IonTitle>Menú Principal</IonTitle>
           <IonButtons slot="end">
             <IonButton onClick={() => setShowNotifications(true)}>
