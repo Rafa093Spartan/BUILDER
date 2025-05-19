@@ -21,6 +21,7 @@ const Home: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [showNotifications, setShowNotifications] = useState(false);
   const [notifications, setNotifications] = useState<Notification[]>([]);
+  const [requestTitle, setRequestTitle] = useState("");  // Nuevo estado para título
   const [requestText, setRequestText] = useState("");
   const [sending, setSending] = useState(false);
   const history = useHistory();
@@ -38,7 +39,6 @@ const Home: React.FC = () => {
     fetchName();
   }, []);
 
-  // Carga notificaciones cuando abres el modal
   useEffect(() => {
     if (showNotifications && auth.currentUser) {
       const fetchNotifications = async () => {
@@ -59,8 +59,11 @@ const Home: React.FC = () => {
     }
   }, [showNotifications]);
 
-  // Función para enviar solicitud
   const sendRequest = async () => {
+    if (!requestTitle.trim()) {
+      alert("Por favor, escribe el título de la solicitud.");
+      return;
+    }
     if (!requestText.trim()) {
       alert("Por favor, escribe tu solicitud.");
       return;
@@ -73,10 +76,12 @@ const Home: React.FC = () => {
       setSending(true);
       await addDoc(collection(db, "requests"), {
         userId: auth.currentUser.uid,
+        title: requestTitle.trim(),
         message: requestText.trim(),
         createdAt: serverTimestamp(),
       });
       alert("Solicitud enviada correctamente.");
+      setRequestTitle("");
       setRequestText("");
     } catch (error) {
       console.error("Error enviando solicitud:", error);
@@ -109,35 +114,40 @@ const Home: React.FC = () => {
         </IonText>
 
         <div className="form-box">
-          <div className="form-title">Crear Solicitud</div>
+          <div className="form-title">crear solicitud</div>
+          <input
+            type="text"
+            placeholder="Titulo"
+            className="form-input"
+            value={requestTitle}
+            onChange={(e) => setRequestTitle(e.target.value)}
+          />
           <textarea
-            placeholder="Escribe tu solicitud"
+            placeholder="escribe tu solicitud"
             className="form-textarea"
-            rows={6}
+            rows={10}
             value={requestText}
             onChange={(e) => setRequestText(e.target.value)}
           />
-          <IonButton
-            className="send-button"
-            onClick={sendRequest}
-            disabled={sending}
-            expand="block"
-            color="warning"
-          >
-            {sending ? "Enviando..." : "Enviar"}
-          </IonButton>
+          <div className="buttons-container">
+            <IonButton
+              className="view-requests-button"
+              onClick={() => history.push("/user-requests")}
+              color="warning"
+            >
+              ver mis solicitudes
+            </IonButton>
+            <IonButton
+              className="send-button"
+              onClick={sendRequest}
+              disabled={sending}
+              color="warning"
+            >
+              {sending ? "Enviando..." : "enviar"}
+            </IonButton>
+          </div>
         </div>
 
-        <IonButton
-          expand="block"
-          color="warning"
-          onClick={() => history.push("/user-requests")}
-          style={{ marginTop: "20px" }}
-        >
-          Ver Mis Solicitudes
-        </IonButton>
-
-        {/* Modal de Notificaciones */}
         <IonModal isOpen={showNotifications} onDidDismiss={() => setShowNotifications(false)}>
           <IonHeader>
             <IonToolbar color="warning">

@@ -1,3 +1,5 @@
+/* Menu.css */
+
 ion-list {
   margin-top: 10px;
 }
@@ -19,9 +21,12 @@ ion-item ion-label p {
   font-family: var(--ion-font-family);
 }
 
-/* Estilo para toolbar azul oscuro con texto blanco */
 .header-toolbar {
   --background: #012538 !important;
-  --color: white !important;
-  color: white;
+  --color: #012538 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+  box-shadow: none;
 }

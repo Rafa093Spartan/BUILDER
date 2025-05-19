@@ -83,7 +83,7 @@ const App: React.FC = () => (
 
         {/* Solicitudes de servicio - Usuario */}
         <Route path="/create-request" component={CreateRequest} exact />
-        <Route path="/user/requests" component={UserRequests} exact />
+        <Route path="/user-requests" component={UserRequests} exact />
         <Route path="/manage-requests" component={ManageRequests} exact />
       </IonRouterOutlet>
     </IonReactRouter>
