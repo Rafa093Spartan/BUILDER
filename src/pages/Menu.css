@@ -21,12 +21,14 @@ ion-item ion-label p {
   font-family: var(--ion-font-family);
 }
 
+/* Estilo del encabezado como en Menú Principal */
 .header-toolbar {
   --background: #012538 !important;
-  --color: #012538 !important;
+  --color: white !important;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 1rem 0;
   box-shadow: none;
+  color: white;
 }

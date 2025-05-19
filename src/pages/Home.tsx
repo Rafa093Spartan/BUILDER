@@ -114,7 +114,7 @@ const Home: React.FC = () => {
         </IonText>
 
         <div className="form-box">
-          <div className="form-title">crear solicitud</div>
+          <div className="form-title">Crear solicitud</div>
           <input
             type="text"
             placeholder="Titulo"
@@ -123,7 +123,7 @@ const Home: React.FC = () => {
             onChange={(e) => setRequestTitle(e.target.value)}
           />
           <textarea
-            placeholder="escribe tu solicitud"
+            placeholder="Escribe tu solicitud"
             className="form-textarea"
             rows={10}
             value={requestText}

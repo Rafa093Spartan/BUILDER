@@ -42,10 +42,11 @@ const Menu: React.FC = () => {
   return (
     <IonPage className="menu-page">
       <IonHeader>
-        <IonToolbar color = "header-toolbar">
+        <IonToolbar className="header-toolbar">
           <IonTitle>Menú</IonTitle>
         </IonToolbar>
       </IonHeader>
+
       <IonContent>
         <IonList>
           <IonItem button onClick={() => history.push("/profile", { userData })}>
