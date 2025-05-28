@@ -1,60 +1,53 @@
 :root {
-  /* Colores principales */
   --ion-color-primary: #f57c00;
   --ion-color-primary-rgb: 245, 124, 0;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-shade: #c46200;
   --ion-color-primary-tint: #ff9d3b;
-
-  /* Fondo y texto */
   --ion-background-color: #ffffff;
   --ion-text-color: #333333;
-
-  /* Color para errores */
-  --ion-color-danger: #d93025;
-
-  /* Tipografía */
   --ion-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
-  /* Tamaños y espaciados */
-  --ion-padding-horizontal: 16px;
-  --ion-padding-vertical: 16px;
   --ion-font-size-base: 16px;
   --ion-font-size-small: 12px;
 }
 
 .account-type-page {
-  background-color: #ffffff;
-  color: #000000;
-  height: 100vh; /* Asegura altura completa de la pantalla */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: var(--ion-background-color);
+  color: var(--ion-text-color);
+  height: 100vh;
 }
 
 .account-type-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; /* CENTRA verticalmente */
-  height: 100vh;           /* OCUPA TODA LA PANTALLA */
+  padding: 16px;
   text-align: center;
-  padding: 0 16px;
+}
+
+.custom-toolbar {
+  --background: #012538;
+}
+
+.custom-title {
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
 }
 
 .branding-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .title-text {
   font-size: 44px;
   font-weight: 900;
   color: #f57c00;
+  font-family: 'capture smallz clean', sans-serif;
   margin-bottom: 4px;
-  font-family: 'capture smallz clean';
 }
 
 .subtitle-text {
@@ -67,65 +60,106 @@
 .person-icon {
   font-size: 80px;
   color: #000000;
-  margin: 30px 0 40px;
+  margin-top: 40px;
+  margin-bottom: 30px;
 }
 
-/* Contenedor vertical para usuario y proveedor */
-.account-block {
+/* Centramos la tarjeta visualmente */
+.card-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+/* Tarjeta */
+.card-box {
+  background-color: #012538;
+  color: white;
+  padding: 20px;
+  border: 1px solid #fb9833;     /* Borde delgado color naranja */
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  width: 90%;
+  max-width: 360px;
   display: flex;
   flex-direction: column;
-  align-items: center;  /* Centra horizontalmente las tarjetas */
-  gap: 30px;
-  width: 100%;
-  max-width: 400px;
+  align-items: flex-start;
 }
 
-/* Caja horizontal para cada fila */
-.account-row {
+
+.user-icon-circle {
+  border: 2px solid white;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
   display: flex;
-  flex-direction: row;
+  justify-content: center;
   align-items: center;
-  justify-content: center; /* Centra ícono + botón juntos */
-  gap: 16px;
-  background-color: #012538;
-  padding: 20px;
-  border: 1px solid #fb9833;
-  border-radius: 12px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  margin-bottom: 10px;
+}
+
+.user-icon {
+  color: white;
+  font-size: 30px;
+}
+
+.card-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.card-list {
+  list-style: none;
+  padding-left: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  color: #cccccc; /* Color gris */
+  text-align: left;
   width: 100%;
 }
 
-/* Ícono izquierdo en blanco */
-.row-icon {
-  font-size: 50px;
-  color: white;
+.card-list li {
+  margin-bottom: 8px;
 }
 
-/* Botón estilo pastilla */
-.row-button {
+/* Botón ENTRAR */
+.button-container {
+  align-self: flex-end;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: -15px;
+}
+
+.enter-button {
   --background: #fb9833;
   --color: black;
   font-weight: bold;
-  text-transform: none;
+  padding: 8px 24px;
   border-radius: 20px;
-  padding: 6px 18px;
-  font-family: 'Geologica', sans-serif;
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  font-size: 16px;
 }
 
-/* Línea divisoria */
-.divider {
-  border: none;
-  border-top: 1px solid #aaa;
-  width: 60%;
-  margin: 0 auto;
+/* Botones de selección */
+.toggle-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
 
-/* ===== CAMBIOS APLICADOS AQUÍ ===== */
-ion-toolbar {
-  --background: #012538 !important;
+.toggle-button {
+  --background: #012538;
+  --color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-radius: 16px;
+  font-size: 10px;
 }
 
-ion-title {
-  color: #ffffff !important;
+.toggle-button.selected {
+  --background: #fb9833;
+  --color: black;
 }
