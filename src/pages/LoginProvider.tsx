@@ -26,7 +26,6 @@ const LoginProvider: React.FC = () => {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const uid = userCredential.user.uid;
 
-      // Solo busca en providers
       const providerDoc = await getDoc(doc(db, "providers", uid));
       if (providerDoc.exists()) {
         history.replace("/provider/dashboard");
@@ -64,10 +63,11 @@ const LoginProvider: React.FC = () => {
   return (
     <IonPage className="login-page">
       <IonHeader>
-        <IonToolbar color="warning">
-          <IonTitle>Iniciar Sesión Proveedor</IonTitle>
+        <IonToolbar className="provider-toolbar">
+          <IonTitle className="provider-title">Iniciar Sesión Proveedor</IonTitle>
         </IonToolbar>
       </IonHeader>
+
       <IonContent className="ion-padding">
         <IonItem>
           <IonLabel position="floating">Correo electrónico</IonLabel>

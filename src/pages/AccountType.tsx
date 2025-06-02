@@ -15,11 +15,15 @@ const AccountType: React.FC = () => {
     history.push(selected === "usuario" ? "/login" : "/login-provider");
   };
 
+  const handleSlide = () => {
+    setSelected(selected === "usuario" ? "proveedor" : "usuario");
+  };
+
   return (
     <IonPage className="account-type-page">
       <IonHeader>
         <IonToolbar className="custom-toolbar">
-          <IonTitle className="custom-title">Crear cuenta</IonTitle>
+          <IonTitle className="custom-title">Crear cuenta 1.0</IonTitle>
         </IonToolbar>
       </IonHeader>
 
@@ -31,63 +35,46 @@ const AccountType: React.FC = () => {
 
         <IonIcon icon={personOutline} className="person-icon" />
 
-        {/* TARJETA ÚNICA SEGÚN SELECCIÓN */}
-        <div className="card-wrapper">
-          {selected === "usuario" ? (
-            <div className="card-box">
-              <div className="user-icon-circle">
-                <IonIcon icon={personOutline} className="user-icon" />
-              </div>
-              <h2 className="card-title">USUARIO</h2>
-              <ul className="card-list">
+        {/* Tarjeta única centrada */}
+        <div className="card-box">
+          <div className="user-icon-circle">
+            <IonIcon
+              icon={selected === "usuario" ? personOutline : constructOutline}
+              className="user-icon"
+            />
+          </div>
+          <h2 className="card-title">{selected === "usuario" ? "USUARIO" : "PROVEEDOR"}</h2>
+          <ul className="card-list">
+            {selected === "usuario" ? (
+              <>
                 <li>Encuentra fácilmente profesionales certificados.</li>
                 <li>Solicita servicios en pocos clics.</li>
                 <li>Elige el proveedor que más te convenga.</li>
                 <li>Pagos seguros y flexibles.</li>
                 <li>Atención personalizada y soporte rápido.</li>
-              </ul>
-              <div className="button-container">
-                <IonButton className="enter-button" onClick={handleEnter}>
-                  ENTRAR
-                </IonButton>
-              </div>
-            </div>
-          ) : (
-            <div className="card-box">
-              <div className="user-icon-circle">
-                <IonIcon icon={constructOutline} className="user-icon" />
-              </div>
-              <h2 className="card-title">PROVEEDOR</h2>
-              <ul className="card-list">
+              </>
+            ) : (
+              <>
                 <li>Ofrece tus servicios a nuevos clientes.</li>
                 <li>Recibe solicitudes personalizadas.</li>
                 <li>Administra tus horarios y tarifas.</li>
                 <li>Cobra de forma segura y sencilla.</li>
                 <li>Soporte dedicado para tu crecimiento.</li>
-              </ul>
-              <div className="button-container">
-                <IonButton className="enter-button" onClick={handleEnter}>
-                  ENTRAR
-                </IonButton>
-              </div>
-            </div>
-          )}
+              </>
+            )}
+          </ul>
+          <div className="button-container">
+            <IonButton className="enter-button" onClick={handleEnter}>
+              ENTRAR
+            </IonButton>
+          </div>
         </div>
 
-        {/* BOTONES DE SELECCIÓN */}
-        <div className="toggle-buttons">
-          <IonButton
-            className={`toggle-button ${selected === "usuario" ? "selected" : ""}`}
-            onClick={() => setSelected("usuario")}
-          >
-            USUARIO
-          </IonButton>
-          <IonButton
-            className={`toggle-button ${selected === "proveedor" ? "selected" : ""}`}
-            onClick={() => setSelected("proveedor")}
-          >
-            PROVEEDOR
-          </IonButton>
+        {/* Indicador visual */}
+        <div className="custom-slider-indicator" onClick={handleSlide}>
+          <div
+            className={`slider-thumb ${selected === "usuario" ? "left" : "right"}`}
+          />
         </div>
       </IonContent>
     </IonPage>

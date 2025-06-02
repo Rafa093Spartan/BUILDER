@@ -64,20 +64,12 @@
   margin-bottom: 30px;
 }
 
-/* Centramos la tarjeta visualmente */
-.card-wrapper {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-/* Tarjeta */
+/* Tarjeta centrada */
 .card-box {
   background-color: #012538;
   color: white;
   padding: 20px;
-  border: 1px solid #fb9833;     /* Borde delgado color naranja */
+  border: 1px solid #fb9833;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
   width: 90%;
@@ -85,8 +77,9 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  box-sizing: border-box;
+  margin: 0 auto 20px auto;
 }
-
 
 .user-icon-circle {
   border: 2px solid white;
@@ -116,7 +109,7 @@
   font-size: 15px;
   line-height: 1.6;
   margin-bottom: 30px;
-  color: #cccccc; /* Color gris */
+  color: #cccccc;
   text-align: left;
   width: 100%;
 }
@@ -125,7 +118,6 @@
   margin-bottom: 8px;
 }
 
-/* Botón ENTRAR */
 .button-container {
   align-self: flex-end;
   width: 100%;
@@ -143,23 +135,36 @@
   font-size: 16px;
 }
 
-/* Botones de selección */
-.toggle-buttons {
+/* Indicador visual deslizante */
+.custom-slider-indicator {
+  width: 90px;
+  height: 12px;
+  background-color: #012538;
+  border-radius: 20px;
   display: flex;
-  justify-content: center;
-  gap: 10px;
+  align-items: center;
+  padding: 2px;
+  position: relative;
+  margin-bottom: 30px;
+  cursor: pointer;
+  margin-left: 395px;
 }
 
-.toggle-button {
-  --background: #012538;
-  --color: white;
-  text-transform: uppercase;
-  font-weight: bold;
-  border-radius: 16px;
-  font-size: 10px;
+.slider-thumb {
+  height: 100%;
+  width: 50%;
+  background-color: #fb9833;
+  border-radius: 20px;
+  position: absolute;
+  top: 0;
+  transition: left 0.3s ease;
+
 }
 
-.toggle-button.selected {
-  --background: #fb9833;
-  --color: black;
+.slider-thumb.left {
+  left: 0;
+}
+
+.slider-thumb.right {
+  left: 50%;
 }

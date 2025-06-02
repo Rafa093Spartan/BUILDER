@@ -1,6 +1,4 @@
-
 .login-page {
-  --background: var(--ion-background-color);
   color: var(--ion-text-color);
 }
 
@@ -31,4 +29,15 @@ ion-button[fill="clear"] {
 ion-content.ion-padding {
   padding-left: var(--ion-padding-horizontal);
   padding-right: var(--ion-padding-horizontal);
+}
+
+/* Cambios visuales: encabezado personalizado */
+.provider-toolbar {
+  --background: #012538;
+}
+
+.provider-title {
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
 }
