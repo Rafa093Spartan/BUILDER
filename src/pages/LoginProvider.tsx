@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import {
   IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
-  IonInput, IonButton, IonText, IonLabel, IonItem
+  IonInput, IonButton, IonText, IonLabel, IonItem, IonIcon
 } from "@ionic/react";
 import { auth, db } from "../firebaseConfig";
 import { sendPasswordResetEmail, signInWithEmailAndPassword } from "firebase/auth";
 import { useHistory } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
+import { eye, eyeOff } from "ionicons/icons";
 import "./LoginProvider.css";
 
 const LoginProvider: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const history = useHistory();
 
@@ -70,27 +72,43 @@ const LoginProvider: React.FC = () => {
 
       <IonContent className="ion-padding">
         <IonItem>
-          <IonLabel position="floating">Correo electrónico</IonLabel>
           <IonInput
+            className="login-input"
+            type="email"
+            label="Correo electrónico"
+            labelPlacement="floating"
+            placeholder=""
             value={email}
             onIonChange={e => setEmail(e.detail.value!)}
-            type="email"
             required
-            className="login-input"
-          />
-        </IonItem>
-        <IonItem>
-          <IonLabel position="floating">Contraseña</IonLabel>
-          <IonInput
-            value={password}
-            onIonChange={e => setPassword(e.detail.value!)}
-            type="password"
-            required
-            className="login-input"
           />
         </IonItem>
 
-        {error && <IonText color="danger"><p className="error-text">{error}</p></IonText>}
+        <IonItem>
+          <IonInput
+            className="login-input"
+            type={showPassword ? "text" : "password"}
+            label="Contraseña"
+            labelPlacement="floating"
+            placeholder=""
+            value={password}
+            onIonChange={e => setPassword(e.detail.value!)}
+            required
+          />
+          <IonButton
+            fill="clear"
+            slot="end"
+            onClick={() => setShowPassword(prev => !prev)}
+          >
+            <IonIcon icon={showPassword ? eyeOff : eye} />
+          </IonButton>
+        </IonItem>
+
+        {error && (
+          <IonText color="danger">
+            <p className="error-text">{error}</p>
+          </IonText>
+        )}
 
         <IonButton expand="block" color="warning" onClick={handleLogin} className="login-button">
           Iniciar sesión

@@ -9,6 +9,18 @@
   font-family: var(--ion-font-family);
 }
 
+ion-item {
+  --background: #eeeeee;
+  border-radius: 12px;
+  border: 1px solid #f57c00;
+  margin-bottom: 12px;
+}
+
+ion-label {
+  color: #777;
+  font-weight: 500;
+}
+
 .error-text {
   color: var(--ion-color-danger);
   font-weight: 600;
@@ -23,15 +35,6 @@
   font-family: var(--ion-font-family);
 }
 
-.password-info {
-  font-size: var(--ion-font-size-small);
-  color: #666;
-  margin-left: 16px;
-  margin-top: 4px;
-  margin-bottom: 12px;
-  font-family: var(--ion-font-family);
-}
-
 ion-button[fill="clear"] {
   color: var(--ion-color-primary);
 }
@@ -39,4 +42,14 @@ ion-button[fill="clear"] {
 ion-content.ion-padding {
   padding-left: var(--ion-padding-horizontal);
   padding-right: var(--ion-padding-horizontal);
+}
+
+/* ✅ Encabezado personalizado */
+.register-toolbar {
+  --background: #012538 !important;
+  --color: white !important;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import {
   IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
-  IonInput, IonButton, IonText, IonLabel, IonItem
+  IonInput, IonButton, IonText, IonItem, IonIcon
 } from "@ionic/react";
 import { auth, db } from "../firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { useHistory } from "react-router-dom";
+import { eye, eyeOff } from "ionicons/icons";
 import "./Register.css";
 
 const Register: React.FC = () => {
@@ -14,12 +15,12 @@ const Register: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [error, setError] = useState("");
   const history = useHistory();
 
-  const validatePassword = (pass: string) => {
-    return pass.length >= 8;
-  };
+  const validatePassword = (pass: string) => pass.length >= 8;
 
   const handleRegister = async () => {
     setError("");
@@ -64,29 +65,70 @@ const Register: React.FC = () => {
   return (
     <IonPage className="register-page">
       <IonHeader>
-        <IonToolbar color="warning">
+        <IonToolbar className="register-toolbar">
           <IonTitle>Crear Cuenta</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding">
         <IonItem>
-          <IonLabel position="floating">Nombre completo</IonLabel>
-          <IonInput value={fullName} onIonChange={e => setFullName(e.detail.value!)} />
-        </IonItem>
-        <IonItem>
-          <IonLabel position="floating">Correo electrónico</IonLabel>
-          <IonInput type="email" value={email} onIonChange={e => setEmail(e.detail.value!)} />
-        </IonItem>
-        <IonItem>
-          <IonLabel position="floating">Contraseña</IonLabel>
-          <IonInput type="password" value={password} onIonChange={e => setPassword(e.detail.value!)} />
-        </IonItem>
-        <IonItem>
-          <IonLabel position="floating">Confirmar contraseña</IonLabel>
-          <IonInput type="password" value={confirmPassword} onIonChange={e => setConfirmPassword(e.detail.value!)} />
+          <IonInput
+            className="register-input"
+            type="text"
+            label="Nombre completo"
+            labelPlacement="floating"
+            placeholder=""
+            value={fullName}
+            onIonChange={e => setFullName(e.detail.value!)}
+          />
         </IonItem>
 
-        {error && <IonText color="danger"><p className="error-text">{error}</p></IonText>}
+        <IonItem>
+          <IonInput
+            className="register-input"
+            type="email"
+            label="Correo electrónico"
+            labelPlacement="floating"
+            placeholder=""
+            value={email}
+            onIonChange={e => setEmail(e.detail.value!)}
+          />
+        </IonItem>
+
+        <IonItem>
+          <IonInput
+            className="register-input"
+            type={showPassword ? "text" : "password"}
+            label="Contraseña"
+            labelPlacement="floating"
+            placeholder=""
+            value={password}
+            onIonChange={e => setPassword(e.detail.value!)}
+          />
+          <IonButton fill="clear" slot="end" onClick={() => setShowPassword(prev => !prev)}>
+            <IonIcon icon={showPassword ? eyeOff : eye} />
+          </IonButton>
+        </IonItem>
+
+        <IonItem>
+          <IonInput
+            className="register-input"
+            type={showConfirmPassword ? "text" : "password"}
+            label="Confirmar contraseña"
+            labelPlacement="floating"
+            placeholder=""
+            value={confirmPassword}
+            onIonChange={e => setConfirmPassword(e.detail.value!)}
+          />
+          <IonButton fill="clear" slot="end" onClick={() => setShowConfirmPassword(prev => !prev)}>
+            <IonIcon icon={showConfirmPassword ? eyeOff : eye} />
+          </IonButton>
+        </IonItem>
+
+        {error && (
+          <IonText color="danger">
+            <p className="error-text">{error}</p>
+          </IonText>
+        )}
 
         <IonButton expand="block" color="warning" onClick={handleRegister}>
           Registrar

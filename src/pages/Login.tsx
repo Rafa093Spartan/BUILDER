@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import {
   IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
-  IonInput, IonButton, IonText, IonLabel, IonItem
+  IonInput, IonButton, IonText, IonItem, IonIcon
 } from "@ionic/react";
 import { auth, db } from "../firebaseConfig";
 import { sendPasswordResetEmail, signInWithEmailAndPassword } from "firebase/auth";
 import { useHistory } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
+import { eye, eyeOff } from "ionicons/icons";
 import "./Login.css";
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const history = useHistory();
 
@@ -77,37 +79,61 @@ const Login: React.FC = () => {
       </IonHeader>
       <IonContent className="ion-padding">
         <IonItem>
-          <IonLabel position="floating">Correo electrónico</IonLabel>
           <IonInput
+            className="login-input"
+            type="email"
+            label="Correo electrónico"
+            labelPlacement="floating"
+            placeholder=""
             value={email}
             onIonChange={e => setEmail(e.detail.value!)}
-            type="email"
             required
-            className="login-input"
           />
         </IonItem>
+
         <IonItem>
-          <IonLabel position="floating">Contraseña</IonLabel>
           <IonInput
+            className="login-input"
+            type={showPassword ? "text" : "password"}
+            label="Contraseña"
+            labelPlacement="floating"
+            placeholder=""
             value={password}
             onIonChange={e => setPassword(e.detail.value!)}
-            type="password"
             required
-            className="login-input"
           />
+          <IonButton
+            fill="clear"
+            slot="end"
+            onClick={() => setShowPassword(prev => !prev)}
+          >
+            <IonIcon icon={showPassword ? eyeOff : eye} />
+          </IonButton>
         </IonItem>
 
-        {error && <IonText color="danger"><p className="error-text">{error}</p></IonText>}
+        {error && (
+          <IonText color="danger">
+            <p className="error-text">{error}</p>
+          </IonText>
+        )}
 
-        <IonButton expand="block" color="warning" onClick={handleLogin} className="login-button">
+        <IonButton
+          expand="block"
+          color="warning"
+          onClick={handleLogin}
+          className="login-button"
+        >
           Iniciar sesión
         </IonButton>
+
         <IonButton fill="clear" expand="block" onClick={() => history.push("/register")}>
           ¿No tienes una cuenta? Regístrate
         </IonButton>
+
         <IonButton fill="clear" expand="block" onClick={handleRecoverPassword}>
           ¿Olvidaste tu contraseña?
         </IonButton>
+
         <IonButton fill="clear" expand="block" onClick={() => history.push("/account-type")}>
           Cambiar tipo de cuenta
         </IonButton>

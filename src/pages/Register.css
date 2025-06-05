@@ -1,14 +1,45 @@
-/* Register.css */
-
 .register-page {
   --background: var(--ion-background-color);
   color: var(--ion-text-color);
 }
 
+ion-item {
+  --background: #eeeeee;
+  border: 1px solid #f57c00;
+  border-radius: 14px;
+  margin-bottom: 16px;
+  --inner-padding-end: 0;
+  --highlight-color-focused: transparent;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+  padding-left: 6px;
+}
+
+ion-item:focus-within {
+  border: 1px solid #fb9833;
+  box-shadow: 0 2px 6px rgba(245, 124, 0, 0.1);
+}
+
 .register-input {
   font-size: var(--ion-font-size-base);
-  padding: 10px;
   font-family: var(--ion-font-family);
+  --padding-start: 12px;
+  --padding-end: 12px;
+  --color: #000;
+}
+
+/* Label animado flotante */
+ion-label {
+  color: rgba(0, 0, 0, 0.5);
+  font-weight: 500;
+  font-size: 14px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Oculta el label al escribir o enfocar */
+ion-item.item-has-focus ion-label.sc-ion-label-md-h,
+ion-item.item-has-placeholder ion-label.sc-ion-label-md-h {
+  transform: translateY(-100%) scale(0.75);
+  opacity: 0;
 }
 
 .error-text {
@@ -25,15 +56,6 @@
   font-family: var(--ion-font-family);
 }
 
-.password-info {
-  font-size: var(--ion-font-size-small);
-  color: #666;
-  margin-left: 16px;
-  margin-top: 4px;
-  margin-bottom: 12px;
-  font-family: var(--ion-font-family);
-}
-
 ion-button[fill="clear"] {
   color: var(--ion-color-primary);
 }
@@ -41,4 +63,13 @@ ion-button[fill="clear"] {
 ion-content.ion-padding {
   padding-left: var(--ion-padding-horizontal);
   padding-right: var(--ion-padding-horizontal);
+}
+
+.register-toolbar {
+  --background: #012538 !important;
+  --color: white !important;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
