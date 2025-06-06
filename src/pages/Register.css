@@ -73,3 +73,19 @@ ion-content.ion-padding {
   justify-content: center;
   align-items: center;
 }
+
+/* 👁 Botón del ojo sin fondo ni sombra */
+.password-toggle-button {
+  box-shadow: none !important;
+  background: transparent !important;
+  --box-shadow: none;
+  --background: transparent;
+  padding: 0;
+  margin: 0;
+}
+
+/* 👁 Icono del ojo en color naranja y sin recortes */
+.password-toggle-button ion-icon {
+  color: #f57c00;
+  font-size: 20px;
+}

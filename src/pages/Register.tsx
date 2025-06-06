@@ -104,8 +104,13 @@ const Register: React.FC = () => {
             value={password}
             onIonChange={e => setPassword(e.detail.value!)}
           />
-          <IonButton fill="clear" slot="end" onClick={() => setShowPassword(prev => !prev)}>
-            <IonIcon icon={showPassword ? eyeOff : eye} />
+          <IonButton
+            fill="clear"
+            slot="end"
+            onClick={() => setShowPassword(prev => !prev)}
+            className="password-toggle-button"
+          >
+            <IonIcon icon={showPassword ? eye : eyeOff} size="small" />
           </IonButton>
         </IonItem>
 
@@ -119,8 +124,13 @@ const Register: React.FC = () => {
             value={confirmPassword}
             onIonChange={e => setConfirmPassword(e.detail.value!)}
           />
-          <IonButton fill="clear" slot="end" onClick={() => setShowConfirmPassword(prev => !prev)}>
-            <IonIcon icon={showConfirmPassword ? eyeOff : eye} />
+          <IonButton
+            fill="clear"
+            slot="end"
+            onClick={() => setShowConfirmPassword(prev => !prev)}
+            className="password-toggle-button"
+          >
+            <IonIcon icon={showConfirmPassword ? eye : eyeOff} size="small" />
           </IonButton>
         </IonItem>
 

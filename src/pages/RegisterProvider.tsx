@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import {
   IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
   IonInput, IonButton, IonText, IonLabel, IonItem, IonTextarea, IonIcon
@@ -20,10 +20,30 @@ const RegisterProvider: React.FC = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [showServiceOptions, setShowServiceOptions] = useState(false);
   const [error, setError] = useState("");
   const history = useHistory();
 
+  const predefinedServices = [
+    "Carpintería",
+    "Pintor",
+    "Albañil",
+    "Mantenimiento",
+    "Herrero"
+  ];
+
+  const inputRef = useRef<HTMLIonInputElement>(null);
+
   const validatePassword = (password: string) => password.length >= 8;
+
+  const addService = (service: string) => {
+    const current = services.split(",").map(s => s.trim()).filter(Boolean);
+    if (!current.includes(service)) {
+      const updated = [...current, service];
+      setServices(updated.join(", "));
+    }
+    setShowServiceOptions(false);
+  };
 
   const handleRegister = async () => {
     setError("");
@@ -67,48 +87,113 @@ const RegisterProvider: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding">
-        <IonItem className="register-item">
-          <IonLabel position="floating">Nombre completo</IonLabel>
-          <IonInput value={fullName} onIonChange={e => setFullName(e.detail.value!)} className="register-input" />
-        </IonItem>
-        <IonItem className="register-item">
-          <IonLabel position="floating">Correo electrónico</IonLabel>
-          <IonInput type="email" value={email} onIonChange={e => setEmail(e.detail.value!)} className="register-input" />
-        </IonItem>
-        <IonItem className="register-item">
-          <IonLabel position="floating">Teléfono</IonLabel>
-          <IonInput type="tel" value={phone} onIonChange={e => setPhone(e.detail.value!)} className="register-input" />
-        </IonItem>
-        <IonItem className="register-item">
-          <IonLabel position="floating">Servicios (separados por coma)</IonLabel>
-          <IonInput value={services} onIonChange={e => setServices(e.detail.value!)} className="register-input" />
-        </IonItem>
-        <IonItem className="register-item">
-          <IonLabel position="floating">Descripción</IonLabel>
-          <IonTextarea value={description} onIonChange={e => setDescription(e.detail.value!)} rows={4} />
-        </IonItem>
-        <IonItem className="register-item">
-          <IonLabel position="floating">Contraseña</IonLabel>
+        <IonItem>
           <IonInput
+            className="register-input"
+            type="text"
+            label="Nombre completo"
+            labelPlacement="floating"
+            value={fullName}
+            onIonChange={e => setFullName(e.detail.value!)}
+          />
+        </IonItem>
+
+        <IonItem>
+          <IonInput
+            className="register-input"
+            type="email"
+            label="Correo electrónico"
+            labelPlacement="floating"
+            value={email}
+            onIonChange={e => setEmail(e.detail.value!)}
+          />
+        </IonItem>
+
+        <IonItem>
+          <IonInput
+            className="register-input"
+            type="tel"
+            label="Teléfono"
+            labelPlacement="floating"
+            value={phone}
+            onIonChange={e => setPhone(e.detail.value!)}
+          />
+        </IonItem>
+
+        <div className="services-input-wrapper">
+          <IonItem>
+            <IonInput
+              className="register-input"
+              label="Servicios (separados por coma)"
+              labelPlacement="floating"
+              value={services}
+              ref={inputRef}
+              onIonChange={e => setServices(e.detail.value!)}
+              onFocus={() => setShowServiceOptions(true)}
+              onBlur={() => setTimeout(() => setShowServiceOptions(false), 150)}
+            />
+          </IonItem>
+
+          {showServiceOptions && (
+            <div className="services-dropdown">
+              {predefinedServices.map((service, index) => (
+                <div key={index} className="services-option" onClick={() => addService(service)}>
+                  {service}
+                </div>
+              ))}
+              <div className="services-option services-cancel" onClick={() => setShowServiceOptions(false)}>
+                Cancelar selección
+              </div>
+            </div>
+          )}
+        </div>
+
+        <IonItem>
+          <IonTextarea
+            className="register-input"
+            label="Descripción"
+            labelPlacement="floating"
+            value={description}
+            onIonChange={e => setDescription(e.detail.value!)}
+            rows={4}
+          />
+        </IonItem>
+
+        <IonItem>
+          <IonInput
+            className="register-input"
             type={showPassword ? "text" : "password"}
+            label="Contraseña"
+            labelPlacement="floating"
             value={password}
             onIonChange={e => setPassword(e.detail.value!)}
-            className="register-input"
           />
-          <IonButton fill="clear" slot="end" onClick={() => setShowPassword(!showPassword)}>
-            <IonIcon icon={showPassword ? eyeOff : eye} />
+          <IonButton
+            fill="clear"
+            slot="end"
+            onClick={() => setShowPassword(!showPassword)}
+            className="password-toggle-button"
+          >
+            <IonIcon icon={showPassword ? eye : eyeOff} size="small" />
           </IonButton>
         </IonItem>
-        <IonItem className="register-item">
-          <IonLabel position="floating">Confirmar contraseña</IonLabel>
+
+        <IonItem>
           <IonInput
+            className="register-input"
             type={showConfirmPassword ? "text" : "password"}
+            label="Confirmar contraseña"
+            labelPlacement="floating"
             value={confirmPassword}
             onIonChange={e => setConfirmPassword(e.detail.value!)}
-            className="register-input"
           />
-          <IonButton fill="clear" slot="end" onClick={() => setShowConfirmPassword(!showConfirmPassword)}>
-            <IonIcon icon={showConfirmPassword ? eyeOff : eye} />
+          <IonButton
+            fill="clear"
+            slot="end"
+            onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+            className="password-toggle-button"
+          >
+            <IonIcon icon={showConfirmPassword ? eye : eyeOff} size="small" />
           </IonButton>
         </IonItem>
 

@@ -23,7 +23,7 @@ const AccountType: React.FC = () => {
     <IonPage className="account-type-page">
       <IonHeader>
         <IonToolbar className="custom-toolbar">
-          <IonTitle className="custom-title">Crear cuenta 1.0</IonTitle>
+          <IonTitle className="custom-title">Crear cuenta 2.0</IonTitle>
         </IonToolbar>
       </IonHeader>
 

@@ -11,14 +11,24 @@
 
 ion-item {
   --background: #eeeeee;
-  border-radius: 12px;
+  border-radius: 10px;
   border: 1px solid #f57c00;
   margin-bottom: 12px;
+  --inner-padding-end: 0;
+  --highlight-color-focused: transparent;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+  padding-left: 6px;
+}
+
+ion-item:focus-within {
+  border: 1px solid #fb9833;
+  box-shadow: 0 2px 6px rgba(245, 124, 0, 0.1);
 }
 
 ion-label {
-  color: #777;
+  color: #666;
   font-weight: 500;
+  font-size: 14px;
 }
 
 .error-text {
@@ -44,7 +54,6 @@ ion-content.ion-padding {
   padding-right: var(--ion-padding-horizontal);
 }
 
-/* ✅ Encabezado personalizado */
 .register-toolbar {
   --background: #012538 !important;
   --color: white !important;
@@ -52,4 +61,60 @@ ion-content.ion-padding {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/* 👁 Icono del ojo */
+.password-toggle-button {
+  box-shadow: none !important;
+  background: transparent !important;
+  --box-shadow: none;
+  --background: transparent;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.password-toggle-button ion-icon {
+  color: #f57c00;
+  font-size: 20px;
+}
+
+/* 🔽 Servicios - contenedor del input */
+.services-input-wrapper {
+  position: relative;
+}
+
+/* 🔽 Dropdown de servicios */
+.services-dropdown {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #f57c00;
+  border-radius: 6px;
+  margin-top: -8px;
+  width: 100%;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 🔽 Opción de servicio (incluye cancelar) */
+.services-option {
+  padding: 10px;
+  cursor: pointer;
+  color: #333;
+  font-weight: 500;
+  text-align: left; /* 🔄 Alineado a la izquierda */
+  transition: background-color 0.2s;
+}
+
+/* Hover en cualquier opción */
+.services-option:hover {
+  background-color: #fff3e0;
+  color: #f57c00;
+}
+
+/* ✅ Cancelar con mismo estilo visual (sin centrado especial) */
+.services-cancel {
+  color: #d32f2f;
 }

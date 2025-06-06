@@ -99,8 +99,9 @@ const LoginProvider: React.FC = () => {
             fill="clear"
             slot="end"
             onClick={() => setShowPassword(prev => !prev)}
+            className="password-toggle-button"
           >
-            <IonIcon icon={showPassword ? eyeOff : eye} />
+            <IonIcon icon={showPassword ? eye : eyeOff} size="small" />
           </IonButton>
         </IonItem>
 
