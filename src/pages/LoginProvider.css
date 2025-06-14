@@ -1,28 +1,48 @@
 .login-page {
+  --background: var(--ion-background-color);
   color: var(--ion-text-color);
+}
+
+ion-item {
+  --background: #eeeeee;
+  border: 1px solid #f57c00;
+  border-radius: 14px;
+  margin-bottom: 16px;
+  --inner-padding-end: 0;
+  --highlight-color-focused: transparent;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+  padding-left: 6px;
+}
+
+ion-item:focus-within {
+  border: 1px solid #fb9833;
+  box-shadow: 0 2px 6px rgba(245, 124, 0, 0.1);
 }
 
 .login-input {
   font-size: var(--ion-font-size-base);
-  padding: 10px;
   font-family: var(--ion-font-family);
+  --padding-start: 12px;
+  --padding-end: 12px;
+  --color: #000000;
 }
 
-/* Diseño flotante minimalista */
-ion-item {
-  --background: #eeeeee;
-  border: 1px solid #f57c00;
-  border-radius: 10px;
-  margin-bottom: 12px;
+ion-input.login-input::part(native)::placeholder {
+  color: #a0a0a0;
+  opacity: 1;
 }
 
-ion-input::part(native) {
-  color: var(--ion-text-color);
-}
-
-ion-label {
-  color: #666;
+ion-input.login-input::part(label) {
+  color: #888888 !important;
   font-weight: 500;
+  font-size: 14px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+ion-item.item-has-focus ion-label.sc-ion-label-md-h,
+ion-item.item-has-placeholder ion-label.sc-ion-label-md-h {
+  transform: translateY(-100%) scale(0.75);
+  opacity: 0;
 }
 
 .error-text {
@@ -33,33 +53,51 @@ ion-label {
 }
 
 .login-button {
+  display: block;
+  width: 100%;
   margin-top: 20px;
+  margin-bottom: 16px;
+  padding: 12px 0;
   font-weight: bold;
   font-size: var(--ion-font-size-base);
   font-family: var(--ion-font-family);
+  color: black;
+  background-color: var(--ion-color-warning);
+  border: none;
+  border-radius: 12px;
+  box-shadow: none;
+  text-shadow: none;
+  appearance: none;
 }
 
-ion-button[fill="clear"] {
+.flat-text-button {
   color: var(--ion-color-primary);
+  background-color: transparent !important;
+  --background: transparent !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  filter: none !important;
+  border: none !important;
+  padding: 8px 0 !important;
+  margin: 8px 0 !important;
+  font-weight: 600;
+  font-size: 14px;
+  width: 100%;
+  display: block;
+  text-align: center;
+  appearance: none;
 }
 
-ion-content.ion-padding {
-  padding-left: var(--ion-padding-horizontal);
-  padding-right: var(--ion-padding-horizontal);
+.flat-text-button::part(native) {
+  background-color: transparent !important;
+  --background: transparent !important;
+  box-shadow: none !important;
+  filter: none !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
-/* Encabezado personalizado */
-.provider-toolbar {
-  --background: #012538;
-}
-
-.provider-title {
-  color: white;
-  font-weight: bold;
-  font-size: 20px;
-}
-
-/* 👁 Botón del ojo sin fondo ni sombra */
 .password-toggle-button {
   box-shadow: none !important;
   background: transparent !important;
@@ -69,8 +107,27 @@ ion-content.ion-padding {
   margin: 0;
 }
 
-/* 👁 Icono del ojo en color naranja y sin recortes */
 .password-toggle-button ion-icon {
   color: #f57c00;
+  font-size: 20px;
+}
+
+ion-content.ion-padding {
+  padding-left: var(--ion-padding-horizontal);
+  padding-right: var(--ion-padding-horizontal);
+}
+
+.provider-toolbar {
+  --background: #012538 !important;
+  --color: white !important;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.provider-title {
+  color: white;
+  font-weight: bold;
   font-size: 20px;
 }

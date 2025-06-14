@@ -76,7 +76,7 @@ const Register: React.FC = () => {
             type="text"
             label="Nombre completo"
             labelPlacement="floating"
-            placeholder=""
+            placeholder="Ej: Juan Pérez"
             value={fullName}
             onIonChange={e => setFullName(e.detail.value!)}
           />
@@ -88,7 +88,7 @@ const Register: React.FC = () => {
             type="email"
             label="Correo electrónico"
             labelPlacement="floating"
-            placeholder=""
+            placeholder="Ej: correo@ejemplo.com"
             value={email}
             onIonChange={e => setEmail(e.detail.value!)}
           />
@@ -100,7 +100,7 @@ const Register: React.FC = () => {
             type={showPassword ? "text" : "password"}
             label="Contraseña"
             labelPlacement="floating"
-            placeholder=""
+            placeholder="Mínimo 8 caracteres"
             value={password}
             onIonChange={e => setPassword(e.detail.value!)}
           />
@@ -120,7 +120,7 @@ const Register: React.FC = () => {
             type={showConfirmPassword ? "text" : "password"}
             label="Confirmar contraseña"
             labelPlacement="floating"
-            placeholder=""
+            placeholder="Repite la contraseña"
             value={confirmPassword}
             onIonChange={e => setConfirmPassword(e.detail.value!)}
           />
@@ -140,15 +140,15 @@ const Register: React.FC = () => {
           </IonText>
         )}
 
-        <IonButton expand="block" color="warning" onClick={handleRegister}>
+        <button className="register-button" onClick={handleRegister}>
           Registrar
-        </IonButton>
+        </button>
 
-        <IonButton fill="clear" expand="block" onClick={() => history.replace("/account-type")}>
+        <IonButton fill="clear" expand="block" className="flat-text-button" onClick={() => history.replace("/account-type")}>
           Cambiar tipo de perfil
         </IonButton>
 
-        <IonButton fill="clear" expand="block" onClick={() => history.push("/login")}>
+        <IonButton fill="clear" expand="block" className="flat-text-button" onClick={() => history.push("/login")}>
           ¿Ya tienes una cuenta? Inicia sesión
         </IonButton>
       </IonContent>

@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import {
   IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
-  IonInput, IonButton, IonText, IonLabel, IonItem, IonTextarea, IonIcon
+  IonInput, IonButton, IonText, IonItem, IonTextarea, IonIcon
 } from "@ionic/react";
 import { eye, eyeOff } from "ionicons/icons";
 import { auth, db } from "../firebaseConfig";
@@ -24,14 +24,7 @@ const RegisterProvider: React.FC = () => {
   const [error, setError] = useState("");
   const history = useHistory();
 
-  const predefinedServices = [
-    "Carpintería",
-    "Pintor",
-    "Albañil",
-    "Mantenimiento",
-    "Herrero"
-  ];
-
+  const predefinedServices = ["Carpintería", "Pintor", "Albañil", "Mantenimiento", "Herrero"];
   const inputRef = useRef<HTMLIonInputElement>(null);
 
   const validatePassword = (password: string) => password.length >= 8;
@@ -93,6 +86,7 @@ const RegisterProvider: React.FC = () => {
             type="text"
             label="Nombre completo"
             labelPlacement="floating"
+            placeholder="Ej: Juan Pérez"
             value={fullName}
             onIonChange={e => setFullName(e.detail.value!)}
           />
@@ -104,6 +98,7 @@ const RegisterProvider: React.FC = () => {
             type="email"
             label="Correo electrónico"
             labelPlacement="floating"
+            placeholder="Ej: correo@ejemplo.com"
             value={email}
             onIonChange={e => setEmail(e.detail.value!)}
           />
@@ -112,9 +107,50 @@ const RegisterProvider: React.FC = () => {
         <IonItem>
           <IonInput
             className="register-input"
+            type={showPassword ? "text" : "password"}
+            label="Contraseña"
+            labelPlacement="floating"
+            placeholder="Mínimo 8 caracteres"
+            value={password}
+            onIonChange={e => setPassword(e.detail.value!)}
+          />
+          <IonButton
+            fill="clear"
+            slot="end"
+            onClick={() => setShowPassword(!showPassword)}
+            className="password-toggle-button"
+          >
+            <IonIcon icon={showPassword ? eye : eyeOff} size="small" />
+          </IonButton>
+        </IonItem>
+
+        <IonItem>
+          <IonInput
+            className="register-input"
+            type={showConfirmPassword ? "text" : "password"}
+            label="Confirmar contraseña"
+            labelPlacement="floating"
+            placeholder="Repite la contraseña"
+            value={confirmPassword}
+            onIonChange={e => setConfirmPassword(e.detail.value!)}
+          />
+          <IonButton
+            fill="clear"
+            slot="end"
+            onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+            className="password-toggle-button"
+          >
+            <IonIcon icon={showConfirmPassword ? eye : eyeOff} size="small" />
+          </IonButton>
+        </IonItem>
+
+        <IonItem>
+          <IonInput
+            className="register-input"
             type="tel"
             label="Teléfono"
             labelPlacement="floating"
+            placeholder="Ej: 6121234567"
             value={phone}
             onIonChange={e => setPhone(e.detail.value!)}
           />
@@ -126,6 +162,7 @@ const RegisterProvider: React.FC = () => {
               className="register-input"
               label="Servicios (separados por coma)"
               labelPlacement="floating"
+              placeholder="Ej: Carpintería, Herrería"
               value={services}
               ref={inputRef}
               onIonChange={e => setServices(e.detail.value!)}
@@ -153,61 +190,29 @@ const RegisterProvider: React.FC = () => {
             className="register-input"
             label="Descripción"
             labelPlacement="floating"
+            placeholder="Breve descripción de tus servicios"
             value={description}
             onIonChange={e => setDescription(e.detail.value!)}
             rows={4}
+            autoGrow
           />
         </IonItem>
 
-        <IonItem>
-          <IonInput
-            className="register-input"
-            type={showPassword ? "text" : "password"}
-            label="Contraseña"
-            labelPlacement="floating"
-            value={password}
-            onIonChange={e => setPassword(e.detail.value!)}
-          />
-          <IonButton
-            fill="clear"
-            slot="end"
-            onClick={() => setShowPassword(!showPassword)}
-            className="password-toggle-button"
-          >
-            <IonIcon icon={showPassword ? eye : eyeOff} size="small" />
-          </IonButton>
-        </IonItem>
+        {error && (
+          <IonText color="danger">
+            <p className="error-text">{error}</p>
+          </IonText>
+        )}
 
-        <IonItem>
-          <IonInput
-            className="register-input"
-            type={showConfirmPassword ? "text" : "password"}
-            label="Confirmar contraseña"
-            labelPlacement="floating"
-            value={confirmPassword}
-            onIonChange={e => setConfirmPassword(e.detail.value!)}
-          />
-          <IonButton
-            fill="clear"
-            slot="end"
-            onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-            className="password-toggle-button"
-          >
-            <IonIcon icon={showConfirmPassword ? eye : eyeOff} size="small" />
-          </IonButton>
-        </IonItem>
-
-        {error && <IonText color="danger"><p className="error-text">{error}</p></IonText>}
-
-        <IonButton expand="block" color="warning" onClick={handleRegister} className="register-button">
+        <button className="register-button" onClick={handleRegister}>
           Registrar proveedor
-        </IonButton>
+        </button>
 
-        <IonButton fill="clear" expand="block" onClick={() => history.push("/login-provider")}>
+        <IonButton fill="clear" expand="block" className="flat-text-button" onClick={() => history.push("/login-provider")}>
           ¿Ya tienes una cuenta? Inicia sesión como proveedor
         </IonButton>
 
-        <IonButton fill="clear" expand="block" onClick={() => history.push("/account-type")}>
+        <IonButton fill="clear" expand="block" className="flat-text-button" onClick={() => history.push("/account-type")}>
           Cambiar tipo de cuenta
         </IonButton>
       </IonContent>

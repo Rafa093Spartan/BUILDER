@@ -11,9 +11,9 @@
 
 ion-item {
   --background: #eeeeee;
-  border-radius: 10px;
+  border-radius: 14px;
   border: 1px solid #f57c00;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
   --inner-padding-end: 0;
   --highlight-color-focused: transparent;
   transition: border 0.3s ease, box-shadow 0.3s ease;
@@ -23,6 +23,15 @@ ion-item {
 ion-item:focus-within {
   border: 1px solid #fb9833;
   box-shadow: 0 2px 6px rgba(245, 124, 0, 0.1);
+}
+
+ion-item ion-textarea {
+  --padding-start: 10px;
+  box-sizing: border-box;
+}
+
+ion-textarea textarea {
+  padding-left: 0 !important;
 }
 
 ion-label {
@@ -39,31 +48,50 @@ ion-label {
 }
 
 .register-button {
+  display: block;
+  width: 100%;
   margin-top: 20px;
+  margin-bottom: 16px;
+  padding: 12px 0;
   font-weight: bold;
   font-size: var(--ion-font-size-base);
   font-family: var(--ion-font-family);
+  color: black;
+  background-color: var(--ion-color-warning);
+  border: none;
+  border-radius: 12px;
+  box-shadow: none;
+  text-shadow: none;
+  appearance: none;
 }
 
-ion-button[fill="clear"] {
+.flat-text-button {
   color: var(--ion-color-primary);
+  background-color: transparent !important;
+  --background: transparent !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  filter: none !important;
+  border: none !important;
+  padding: 8px 0 !important;
+  margin: 8px 0 !important;
+  font-weight: 600;
+  font-size: 14px;
+  width: 100%;
+  display: block;
+  text-align: center;
+  appearance: none;
 }
 
-ion-content.ion-padding {
-  padding-left: var(--ion-padding-horizontal);
-  padding-right: var(--ion-padding-horizontal);
+.flat-text-button::part(native) {
+  background-color: transparent !important;
+  --background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
-.register-toolbar {
-  --background: #012538 !important;
-  --color: white !important;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* 👁 Icono del ojo */
 .password-toggle-button {
   box-shadow: none !important;
   background: transparent !important;
@@ -81,12 +109,10 @@ ion-content.ion-padding {
   font-size: 20px;
 }
 
-/* 🔽 Servicios - contenedor del input */
 .services-input-wrapper {
   position: relative;
 }
 
-/* 🔽 Dropdown de servicios */
 .services-dropdown {
   position: absolute;
   background-color: white;
@@ -98,23 +124,34 @@ ion-content.ion-padding {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* 🔽 Opción de servicio (incluye cancelar) */
 .services-option {
   padding: 10px;
   cursor: pointer;
   color: #333;
   font-weight: 500;
-  text-align: left; /* 🔄 Alineado a la izquierda */
+  text-align: left;
   transition: background-color 0.2s;
 }
 
-/* Hover en cualquier opción */
 .services-option:hover {
   background-color: #fff3e0;
   color: #f57c00;
 }
 
-/* ✅ Cancelar con mismo estilo visual (sin centrado especial) */
 .services-cancel {
   color: #d32f2f;
+}
+
+ion-content.ion-padding {
+  padding-left: var(--ion-padding-horizontal);
+  padding-right: var(--ion-padding-horizontal);
+}
+
+.register-toolbar {
+  --background: #012538 !important;
+  --color: white !important;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

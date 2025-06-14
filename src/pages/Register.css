@@ -24,18 +24,22 @@ ion-item:focus-within {
   font-family: var(--ion-font-family);
   --padding-start: 12px;
   --padding-end: 12px;
-  --color: #000;
+  --color: #000000;
 }
 
-/* Label animado flotante */
-ion-label {
-  color: rgba(0, 0, 0, 0.5);
+ion-input.register-input::part(native)::placeholder {
+  color: #a0a0a0;
+  opacity: 1;
+}
+
+/* ✅ CORRECTO: Label flotante gris */
+ion-input.register-input::part(label) {
+  color: #888888 !important;
   font-weight: 500;
   font-size: 14px;
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-/* Oculta el label al escribir o enfocar */
 ion-item.item-has-focus ion-label.sc-ion-label-md-h,
 ion-item.item-has-placeholder ion-label.sc-ion-label-md-h {
   transform: translateY(-100%) scale(0.75);
@@ -50,14 +54,63 @@ ion-item.item-has-placeholder ion-label.sc-ion-label-md-h {
 }
 
 .register-button {
+  display: block;
+  width: 100%;
   margin-top: 20px;
+  margin-bottom: 16px;
+  padding: 12px 0;
   font-weight: bold;
   font-size: var(--ion-font-size-base);
   font-family: var(--ion-font-family);
+  color: black;
+  background-color: var(--ion-color-warning);
+  border: none;
+  border-radius: 12px;
+  box-shadow: none;
+  text-shadow: none;
+  appearance: none;
 }
 
-ion-button[fill="clear"] {
+.flat-text-button {
   color: var(--ion-color-primary);
+  background-color: transparent !important;
+  --background: transparent !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  filter: none !important;
+  border: none !important;
+  padding: 8px 0 !important;
+  margin: 8px 0 !important;
+  font-weight: 600;
+  font-size: 14px;
+  width: 100%;
+  display: block;
+  text-align: center;
+  appearance: none;
+}
+
+.flat-text-button::part(native) {
+  background-color: transparent !important;
+  --background: transparent !important;
+  box-shadow: none !important;
+  filter: none !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.password-toggle-button {
+  box-shadow: none !important;
+  background: transparent !important;
+  --box-shadow: none;
+  --background: transparent;
+  padding: 0;
+  margin: 0;
+}
+
+.password-toggle-button ion-icon {
+  color: #f57c00;
+  font-size: 20px;
 }
 
 ion-content.ion-padding {
@@ -72,20 +125,4 @@ ion-content.ion-padding {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-/* 👁 Botón del ojo sin fondo ni sombra */
-.password-toggle-button {
-  box-shadow: none !important;
-  background: transparent !important;
-  --box-shadow: none;
-  --background: transparent;
-  padding: 0;
-  margin: 0;
-}
-
-/* 👁 Icono del ojo en color naranja y sin recortes */
-.password-toggle-button ion-icon {
-  color: #f57c00;
-  font-size: 20px;
 }

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {
   IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
-  IonInput, IonButton, IonText, IonLabel, IonItem, IonIcon
+  IonInput, IonButton, IonText, IonItem, IonIcon
 } from "@ionic/react";
 import { auth, db } from "../firebaseConfig";
 import { sendPasswordResetEmail, signInWithEmailAndPassword } from "firebase/auth";
@@ -77,7 +77,7 @@ const LoginProvider: React.FC = () => {
             type="email"
             label="Correo electrónico"
             labelPlacement="floating"
-            placeholder=""
+            placeholder="Ej: proveedor@ejemplo.com"
             value={email}
             onIonChange={e => setEmail(e.detail.value!)}
             required
@@ -90,7 +90,7 @@ const LoginProvider: React.FC = () => {
             type={showPassword ? "text" : "password"}
             label="Contraseña"
             labelPlacement="floating"
-            placeholder=""
+            placeholder="Mínimo 8 caracteres"
             value={password}
             onIonChange={e => setPassword(e.detail.value!)}
             required
@@ -111,19 +111,19 @@ const LoginProvider: React.FC = () => {
           </IonText>
         )}
 
-        <IonButton expand="block" color="warning" onClick={handleLogin} className="login-button">
+        <button className="login-button" onClick={handleLogin}>
           Iniciar sesión
-        </IonButton>
+        </button>
 
-        <IonButton fill="clear" expand="block" onClick={() => history.push("/register-provider")}>
+        <IonButton fill="clear" expand="block" className="flat-text-button" onClick={() => history.push("/register-provider")}>
           ¿No tienes una cuenta? Regístrate como proveedor
         </IonButton>
 
-        <IonButton fill="clear" expand="block" onClick={handleRecoverPassword}>
+        <IonButton fill="clear" expand="block" className="flat-text-button" onClick={handleRecoverPassword}>
           ¿Olvidaste tu contraseña?
         </IonButton>
 
-        <IonButton fill="clear" expand="block" onClick={() => history.push("/account-type")}>
+        <IonButton fill="clear" expand="block" className="flat-text-button" onClick={() => history.push("/account-type")}>
           Cambiar tipo de cuenta
         </IonButton>
       </IonContent>
